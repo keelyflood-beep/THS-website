@@ -65,7 +65,25 @@ The calendar embed is from TidyCal. In `index.html`, find `<div class="tidycal-e
 The form is embedded from Tally. In `index.html`, find the `<iframe data-tally-src="...">` tag and replace the URL with your own Tally form embed link.
 
 ### Update the LinkedIn post embeds
-In `index.html`, find the `<section id="linkedin">` block. Each `<iframe src="https://www.linkedin.com/embed/feed/update/...">` is one embedded post. Replace the `src` URL with your own LinkedIn post embed link (click the three dots on a LinkedIn post → "Embed this post").
+LinkedIn posts are controlled by `linkedin-posts.json` in the root of the repo. Edit that file to swap posts in or out — no HTML changes needed.
+
+Each entry needs two things:
+```json
+[
+  {
+    "embedUrl": "https://www.linkedin.com/embed/feed/update/urn:li:share:XXXXXXXXX?collapsed=1",
+    "height": 500
+  }
+]
+```
+
+**How to get the embed URL and height for a post:**
+1. Go to the post on LinkedIn
+2. Click the three dots (`...`) in the top-right corner of the post
+3. Click **"Embed this post"**
+4. LinkedIn shows you an `<iframe>` snippet — copy the `src` value as `embedUrl` and the `height` value as `height`
+
+You can have as many posts in the array as you want. They'll display in a responsive grid.
 
 ### Update the Substack feed
 In `js/substack.js`, find the line:
