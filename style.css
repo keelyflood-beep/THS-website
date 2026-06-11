@@ -8,7 +8,7 @@
     --text-main: #334155;        
     --text-light: #64748b;       
     --border-radius: 12px;       
-    --section-padding: 100px 20px;
+    --section-padding: 80px 20px;
 }
 
 /* Reset and Base Styles */
@@ -197,6 +197,7 @@ nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2.5rem;
+    align-items: start;
 }
 
 /* Scrolling Reviews (Marquee) */
@@ -290,23 +291,17 @@ nav {
 
 /* Embed Containers */
 .embed-container {
-    position: relative;
     width: 100%;
-    border-radius: var(--border-radius);
     overflow: hidden;
-    background: var(--background-color);
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px dashed #cbd5e1;
 }
 
 /* Force LinkedIn iframes to be responsive */
 .embed-container iframe {
+    display: block;
     width: 100% !important;
     max-width: 504px;
     border: none;
+    border-radius: var(--border-radius);
 }
 
 /* Quiz Buttons */
@@ -336,6 +331,11 @@ footer {
     text-align: center;
     padding: 4rem 20px;
     margin-top: 4rem;
+}
+
+footer h2 {
+    color: white;
+    margin-bottom: 1rem;
 }
 
 /* Responsive */
@@ -700,4 +700,163 @@ footer {
     .pricing-card.highlighted:hover {
         transform: translateY(-5px);
     }
+}
+
+/* ===========================================
+   UTILITY CLASSES
+   =========================================== */
+
+/* Text */
+.text-center { text-align: center; }
+.text-muted { color: #94a3b8; }
+
+/* Container Width Variants */
+.container-sm { max-width: 600px; margin: 0 auto; }
+.container-md { max-width: 700px; margin: 0 auto; }
+.container-lg { max-width: 800px; margin: 0 auto; }
+
+/* Button Size Variant */
+.btn-sm {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+}
+
+/* ===========================================
+   SECTION VARIANTS
+   =========================================== */
+
+/* White/card background sections */
+.section-surface {
+    background-color: var(--surface-color);
+}
+
+/* Dark/primary background sections (calculator, etc.) */
+.section-dark {
+    background: var(--primary-color);
+    color: white;
+}
+
+/* Reviews marquee section has tighter custom padding */
+.section-reviews {
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+/* ===========================================
+   ABOUT SECTION (Services page)
+   =========================================== */
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 900px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+/* ===========================================
+   ROI CALCULATOR (index.html)
+   =========================================== */
+
+.calculator-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    color: var(--primary-color);
+    text-align: left;
+}
+
+.calculator-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.calculator-label-value {
+    color: var(--accent-color);
+}
+
+.calculator-slider {
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.calculator-result {
+    border-top: 1px solid #e2e8f0;
+    padding-top: 1.5rem;
+    text-align: center;
+}
+
+.calculator-result p {
+    font-size: 1rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.calculator-result h3 {
+    font-size: 2.5rem;
+    color: #10b981;
+    margin: 0;
+}
+
+/* ===========================================
+   SUBSTACK ARTICLE CARDS (index.html)
+   =========================================== */
+
+.article-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.article-date {
+    font-size: 0.85rem;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.article-title {
+    margin-top: 0.75rem;
+    font-size: 1.3rem;
+    line-height: 1.4;
+}
+
+.article-title a {
+    color: var(--primary-color);
+}
+
+.article-snippet {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+}
+
+.article-link {
+    font-weight: 600;
+    color: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===========================================
+   INQUIRY FORM (index.html)
+   =========================================== */
+
+.inquiry-embed {
+    padding: 0;
 }
