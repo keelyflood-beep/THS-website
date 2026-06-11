@@ -276,5 +276,19 @@
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <script src="scripts.js"></script>
+
+    <button id="chatbot-toggle" aria-label="Open chat">💬</button>
+    <div id="chatbot-window">
+        <div id="chatbot-header">
+            Honest AI <button id="chatbot-close">&times;</button>
+        </div>
+        <div id="chatbot-messages">
+            <div class="bot-msg">Hey there! I'm the Honest AI bot. Drop your biggest sales challenge below and I'll solve it for you right now.</div>
+        </div>
+        <form id="chatbot-form">
+            <input type="text" id="chatbot-input" placeholder="Type your problem..." autocomplete="off">
+            <button type="submit">Send</button>
+        </form>
+    </div>
 </body>
 </html>
