@@ -91,60 +91,6 @@ window.showResults = function(points) {
     resultsDiv.style.display = 'block';
 }
 
-window.resetQuiz = function(e) {
-    e.preventDefault();
-    totalScore = 0;
-    document.querySelectorAll('.quiz-step').forEach(step => {
-        step.style.display = 'none';
-    });
-    document.getElementById('step-1').style.display = 'block';
-}
-
-
-// --- Substack RSS Fetch Logic --- //
-document.addEventListener("DOMContentLoaded", () => {
-    const substackRssUrl = 'https://thehonestsalesperson.substack.com/feed';
-    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(substackRssUrl)}`;
-
-    fetch(apiUrl)
-        .then(response => response.json())
-        .then(data => {
-            const container = document.getElementById('substack-feed');
-            if(!container) return;
-            
-            container.innerHTML = ''; 
-            
-            const latestPosts = data.items.slice(0, 3);
-
-            latestPosts.forEach(post => {
-                const pubDate = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                const cleanSnippet = post.description.replace(/<[^>]*>?/gm, '').substring(0, 130) + '...';
-
-                const postCardHtml = `
-                    <div class="surface-box" style="display: flex; flex-direction: column; justify-content: space-between;">
-                        <div>
-                            <span style="font-size: 0.85rem; color: var(--accent-color); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">${pubDate}</span>
-                            <h3 style="margin-top: 0.75rem; font-size: 1.3rem; line-height: 1.4;">
-                                <a href="${post.link}" target="_blank" style="color: var(--primary-color);">${post.title}</a>
-                            </h3>
-                            <p style="font-size: 1rem; color: var(--text-main); margin-bottom: 1.5rem;">${cleanSnippet}</p>
-                        </div>
-                        <a href="${post.link}" target="_blank" style="font-weight: 600; color: var(--accent-color); display: inline-flex; align-items: center; gap: 0.5rem;">
-                            Read Article <span aria-hidden="true">&rarr;</span>
-                        </a>
-                    </div>
-                `;
-                container.innerHTML += postCardHtml;
-            });
-        })
-        .catch(error => {
-            const container = document.getElementById('substack-feed');
-            if(container) {
-                 container.innerHTML = '<p style="text-align: center; color: var(--text-light);">Unable to load articles right now. Please visit the Substack directly.</p>';
-            }
-        });
-});
-
 // --- Honest Chatbot Logic --- //
 const chatToggle = document.getElementById('chatbot-toggle');
 const chatWindow = document.getElementById('chatbot-window');
@@ -200,3 +146,59 @@ if(chatForm) {
         }, 800); // 800ms delay feels natural
     });
 }
+
+
+
+window.resetQuiz = function(e) {
+    e.preventDefault();
+    totalScore = 0;
+    document.querySelectorAll('.quiz-step').forEach(step => {
+        step.style.display = 'none';
+    });
+    document.getElementById('step-1').style.display = 'block';
+}
+
+
+// --- Substack RSS Fetch Logic --- //
+document.addEventListener("DOMContentLoaded", () => {
+    const substackRssUrl = 'https://thehonestsalesperson.substack.com/feed';
+    const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(substackRssUrl)}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('substack-feed');
+            if(!container) return;
+            
+            container.innerHTML = ''; 
+            
+            const latestPosts = data.items.slice(0, 3);
+
+            latestPosts.forEach(post => {
+                const pubDate = new Date(post.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const cleanSnippet = post.description.replace(/<[^>]*>?/gm, '').substring(0, 130) + '...';
+
+                const postCardHtml = `
+                    <div class="surface-box" style="display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <span style="font-size: 0.85rem; color: var(--accent-color); text-transform: uppercase; font-weight: 700; letter-spacing: 0.05em;">${pubDate}</span>
+                            <h3 style="margin-top: 0.75rem; font-size: 1.3rem; line-height: 1.4;">
+                                <a href="${post.link}" target="_blank" style="color: var(--primary-color);">${post.title}</a>
+                            </h3>
+                            <p style="font-size: 1rem; color: var(--text-main); margin-bottom: 1.5rem;">${cleanSnippet}</p>
+                        </div>
+                        <a href="${post.link}" target="_blank" style="font-weight: 600; color: var(--accent-color); display: inline-flex; align-items: center; gap: 0.5rem;">
+                            Read Article <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </div>
+                `;
+                container.innerHTML += postCardHtml;
+            });
+        })
+        .catch(error => {
+            const container = document.getElementById('substack-feed');
+            if(container) {
+                 container.innerHTML = '<p style="text-align: center; color: var(--text-light);">Unable to load articles right now. Please visit the Substack directly.</p>';
+            }
+        });
+});
