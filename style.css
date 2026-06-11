@@ -327,19 +327,62 @@ footer {
 }
 
 /* Responsive */
+/* Responsive Overrides */
 @media (max-width: 900px) {
+    /* Show the hamburger button */
+    .mobile-menu-toggle {
+        display: block; 
+    }
+    
+    /* Hide normal layout, setup dropdown layout */
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Drops down exactly below the header */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98); /* Solid background so it's readable */
+        padding: 1.5rem 20px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #e2e8f0;
+    }
+
+    /* The class JavaScript will add when clicked */
+    .nav-links.active {
+        display: flex; 
+    }
+
+    /* Space out the links for "fat fingers" on mobile */
+    .nav-links a {
+        padding: 0.75rem 0;
+        font-size: 1.1rem;
+    }
+
+    .nav-links .btn {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    /* Existing overrides */
     .hero-grid, .calendar-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+    .pricing-grid {
+        grid-template-columns: 1fr; 
+    }
+    .pricing-card.tier-2 {
+        transform: none; 
+    }
+    .pricing-card.tier-2:hover {
+        transform: translateY(-5px);
     }
     .hero h1 {
         font-size: 2.75rem;
     }
     .hero-image {
         height: 350px;
-    }
-    .nav-links {
-        display: none;
     }
     .testimonial-card {
         width: 300px;
@@ -646,3 +689,15 @@ footer {
         transform: translateY(-5px);
     }
 }
+
+/* Mobile Menu Button - Hidden on Desktop */
+.mobile-menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    line-height: 1;
+}
+
