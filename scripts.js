@@ -200,3 +200,33 @@ if(chatForm) {
         }, 800); // 800ms delay feels natural
     });
 }
+
+
+// --- Mobile Navigation Toggle --- //
+document.addEventListener("DOMContentLoaded", () => {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinksList = document.querySelectorAll('.nav-links a');
+
+    if (mobileToggle && navMenu) {
+        // Toggle menu open/close on button click
+        mobileToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            // Swap the icon from hamburger to an 'X' when open
+            if (navMenu.classList.contains('active')) {
+                mobileToggle.textContent = '✕';
+            } else {
+                mobileToggle.textContent = '☰';
+            }
+        });
+
+        // Close the menu automatically when a link is clicked
+        navLinksList.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            });
+        });
+    }
+});
