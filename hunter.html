@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The HUNTER Framework: how The Honest Hire identifies recruiters with FITFO, the mindset that separates desk-builders from order-takers. Used on every retained search.">
+    <title>The HUNTER Framework | The Honest Hire</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* HUNTER Framework: page-specific components not in style.css */
+
+        /* Trait grid: 3 columns for 6 trait cards */
+        .trait-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .trait-card {
+            background: var(--surface-color);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--border-radius);
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .trait-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+        .trait-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--accent-color);
+            border-radius: 4px 0 0 4px;
+        }
+        .trait-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px; height: 38px;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 800;
+            border-radius: 50%;
+            margin-bottom: 0.85rem;
+        }
+        .trait-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.2rem;
+        }
+        .trait-tagline {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+        .trait-divider {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin-bottom: 0.75rem;
+        }
+        .trait-look {
+            font-size: 0.83rem;
+            color: var(--text-light);
+            line-height: 1.55;
+            margin-bottom: 0;
+        }
+        .trait-look strong { color: var(--text-main); font-weight: 600; }
+
+        /* FITFO acronym block (sits inside a .section-dark) */
+        .fitfo-acronym {
+            display: flex;
+            justify-content: center;
+            max-width: 460px;
+            margin: 2.5rem auto;
+            background: rgba(255,255,255,0.05);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.08);
+            overflow: hidden;
+        }
+        .fitfo-letter {
+            flex: 1;
+            text-align: center;
+            padding: 1.25rem 0.5rem;
+            border-right: 1px solid rgba(255,255,255,0.08);
+        }
+        .fitfo-letter:last-child { border-right: none; }
+        .fitfo-letter .fl-big   { display: block; font-size: 2rem; font-weight: 800; color: #93c5fd; }
+        .fitfo-letter .fl-small { display: block; font-size: 0.6rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.2rem; }
+
+        /* Dark-section text overrides (global .section-dark only sets the background) */
+        .section-dark h2 { color: #fff; }
+        .section-dark p  { color: #94a3b8; }
+        .section-dark em { color: #93c5fd; font-style: normal; font-weight: 600; }
+
+        @media (max-width: 900px) {
+            .trait-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 600px) {
+            .trait-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">The Honest Salesperson</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation">☰</button>
+            <div class="nav-links" id="nav-menu">
+                <a href="services.html">Coaching</a>
+                <a href="recruitment.html">The Honest Hire</a>
+                <a href="index.html#substack">Articles</a>
+                <a href="index.html#linkedin">Insights</a>
+                <a href="index.html#reviews">Success Stories</a>
+                <a href="https://tidycal.com/keelyflood1/hiringdiscussion" target="_blank" rel="noopener" class="btn btn-sm">Book a Call</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" style="padding: 80px 20px 40px 20px;">
+        <div class="container text-center">
+            <p style="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; margin-bottom: 1rem;">The Honest Hire &nbsp;&middot;&nbsp; Retained Rec-to-Rec Search</p>
+            <h1 style="font-size: 3rem; margin-bottom: 1rem;">The HUNTER Framework.</h1>
+            <p style="color: var(--text-light); max-width: 680px; margin: 0 auto 1.5rem; font-size: 1.2rem; line-height: 1.7;">
+                We use the HUNTER Framework to identify recruiters who have FITFO, because if you're going to build a desk, build territory, and generate real revenue, you need hunters. Not order-takers.
+            </p>
+            <p style="color: var(--accent-color); font-weight: 600; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem;">Retained search only</p>
+            <a href="https://tidycal.com/keelyflood1/hiringdiscussion" target="_blank" rel="noopener" class="btn">Start a Retained Search</a>
+        </div>
+    </section>
+
+    <!-- SIX TRAITS -->
+    <section class="section-surface">
+        <div class="container">
+            <h2 style="margin-bottom: 0.5rem;">Six traits. One standard.</h2>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto 3rem; font-size: 1.05rem; text-align: center;">
+                Every candidate we present has been evaluated against all six HUNTER traits. Strong Hunters clear four or more, and H, U, and R are the three we never compromise on.
+            </p>
+
+            <div class="trait-grid">
+
+                <div class="trait-card">
+                    <div class="trait-badge">H</div>
+                    <div class="trait-name">Head First</div>
+                    <div class="trait-tagline">They act before having all the answers.</div>
+                    <hr class="trait-divider">
+                    <p class="trait-look"><strong>Look for:</strong> Independent action under uncertainty. Discomfort without paralysis. They make a move, learn, and adjust. No playbook required.</p>
+                </div>
+
+                <div class="trait-card">
+                    <div class="trait-badge">U</div>
+                    <div class="trait-name">Urgency</div>
+                    <div class="trait-tagline">Every day, the scoreboard matters.</div>
+                    <hr class="trait-divider">
+                    <p class="trait-look"><strong>Look for:</strong> A specific follow-up cadence. Language like &ldquo;I don&rsquo;t let it sit.&rdquo; Creates momentum instead of waiting for it.</p>
+                </div>
+
+                <div class="trait-card">
+                    <div class="trait-badge">N</div>
+                    <div class="trait-name">Navigate</div>
+                    <div class="trait-tagline">They find a way through without hand-holding.</div>
+                    <hr class="trait-divider">
+                    <p class="trait-look"><strong>Look for:</strong> Problem-solving ownership. Relational savvy under pressure. Takes accountability for their role in what goes wrong.</p>
+                </div>
+
+                <div class="trait-card">
+                    <div class="trait-badge">T</div>
+                    <div class="trait-name">Territory</div>
+                    <div class="trait-tagline">They own a market, not just a job board.</div>
+                    <hr class="trait-divider">
+                    <p class="trait-look"><strong>Look for:</strong> Named niche with specificity. Long-term relationship cultivation. Knows their market cold: funding, trends, key players.</p>
+                </div>
+
+                <div class="trait-card">
+                    <div class="trait-badge">E</div>
+                    <div class="trait-name">Execute</div>
+                    <div class="trait-tagline">They do what they say. High output. Consistent.</div>
+                    <hr class="trait-divider">
+                    <p class="trait-look"><strong>Look for:</strong> Named metrics. Results-talk, not effort-talk. Has a recovery plan for slow stretches, not just hope.</p>
+                </div>
+
+                <div class="trait-card">
+                    <div class="trait-badge">R</div>
+                    <div class="trait-name">Relentless</div>
+                    <div class="trait-tagline">They don&rsquo;t quit when it gets hard.</div>
+                    <hr class="trait-divider">
+                    <p class="trait-look"><strong>Look for:</strong> Real hard-stretch story with a matter-of-fact tone. Recovery with learning, not just survival. Returns to fundamentals under pressure.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FITFO SECTION -->
+    <section class="section-dark">
+        <div class="container text-center">
+            <p style="color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; margin-bottom: 1rem;">The Mindset</p>
+            <h2 style="font-size: 2.2rem; margin-bottom: 1rem;">You want recruiters with a FITFO mentality.</h2>
+            <p style="max-width: 640px; margin: 0 auto; font-size: 1.1rem; line-height: 1.7;">
+                The best recruiter isn&rsquo;t the one with the fanciest ATS or the biggest LinkedIn network. It&rsquo;s the one who gets a brand-new client, zero relationships in the space, and figures out exactly who to call, what to say, and how to work the deal from first conversation to close.
+            </p>
+            <p style="max-width: 640px; margin: 1rem auto 0; font-size: 1.1rem;">
+                Nobody told them how. They just did it. <em>That&rsquo;s FITFO.</em>
+            </p>
+
+            <div class="fitfo-acronym">
+                <div class="fitfo-letter"><span class="fl-big">F</span><span class="fl-small">Figure</span></div>
+                <div class="fitfo-letter"><span class="fl-big">I</span><span class="fl-small">It</span></div>
+                <div class="fitfo-letter"><span class="fl-big">T</span><span class="fl-small">The</span></div>
+                <div class="fitfo-letter"><span class="fl-big">F</span><span class="fl-small">F*ck</span></div>
+                <div class="fitfo-letter"><span class="fl-big">O</span><span class="fl-small">Out</span></div>
+            </div>
+
+            <p style="max-width: 640px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7;">
+                It&rsquo;s not a skill you teach in an onboarding. It&rsquo;s a mentality, and it&rsquo;s rare. Which is why we built the HUNTER Framework to identify it <em>before</em> someone hires the wrong person and finds out six months too late.
+            </p>
+        </div>
+    </section>
+
+    <!-- HOW WE USE IT -->
+    <section>
+        <div class="container">
+            <h2 style="margin-bottom: 3rem;">How we use the framework.</h2>
+            <div class="content-grid" style="max-width: 760px; margin: 0 auto;">
+
+                <div>
+                    <h3 style="color: var(--accent-color); font-size: 1.1rem; margin-bottom: 0.75rem;">01 &middot; HUNTER Interview</h3>
+                    <p>Four primary questions plus targeted follow-up probes for each trait. We&rsquo;re listening for specific stories and real evidence of action, not polished answers, not what they&rsquo;d theoretically do.</p>
+                </div>
+
+                <div>
+                    <h3 style="color: var(--accent-color); font-size: 1.1rem; margin-bottom: 0.75rem;">02 &middot; Scoring Rubric</h3>
+                    <p>Green flags vs. red flags per trait, scored against what we actually observed in the conversation. Strong Hunters clear four to six traits. Head First, Urgency, and Relentless are the three we never compromise on: the traits that predict desk-building ability.</p>
+                </div>
+
+                <div>
+                    <h3 style="color: var(--accent-color); font-size: 1.1rem; margin-bottom: 0.75rem;">03 &middot; Honest Assessment</h3>
+                    <p>We tell you exactly what we found, including the gaps, before you meet a single candidate. If the comp plan will make the placement fail, we&rsquo;ll tell you that too.</p>
+                </div>
+
+                <div>
+                    <h3 style="color: var(--accent-color); font-size: 1.1rem; margin-bottom: 0.75rem;">04 &middot; Present &amp; Place</h3>
+                    <p>You meet a short list of qualified, motivated hunters. We support you through interviews, offers, and close. We stand behind every placement we make.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-surface">
+        <div class="container container-lg">
+            <h2 style="margin-bottom: 3rem;">Questions about the framework.</h2>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h4>What&rsquo;s the difference between a hunter and an order-taker?</h4>
+                    <p>An order-taker fills the reqs handed to them and calls it a day when the market slows down. A hunter builds pipeline, develops clients, and doesn&rsquo;t need to be told what to do next. The HUNTER Framework was built to identify the difference before you make an expensive hire.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Do all candidates go through HUNTER evaluation?</h4>
+                    <p>Yes. Every candidate we present has been interviewed against the framework. No exceptions. It&rsquo;s how we can stand behind our placements and have honest conversations with you about the gaps we found.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>What if a candidate is strong in some traits but not others?</h4>
+                    <p>We tell you exactly where they sit. A strong candidate clears four or more traits, and we never compromise on H, U, or R. If there&rsquo;s a conditional candidate worth considering, we&rsquo;ll say that explicitly and give you the context to make the call.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Can I get a copy of the interview questions and scoring rubric?</h4>
+                    <p>Yes. We share the full HUNTER interview guide and scoring rubric as part of every retained search engagement. It becomes a tool your team can use for future hiring well beyond this search.</p>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top: 3rem;">
+                <a href="https://tidycal.com/keelyflood1/hiringdiscussion" target="_blank" rel="noopener" class="btn">Start a Retained Search</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h2>The Honest Salesperson</h2>
+            <p style="color: #94a3b8; font-size: 0.9rem;">&copy; 2026 The Honest Salesperson. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/nav.js"></script>
+</body>
+</html>
